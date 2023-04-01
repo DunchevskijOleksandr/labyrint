@@ -47,15 +47,44 @@ class Player(GameSprite):
 
 class Enemy(GameSprite):
     def update(self):
-        if self.rect.x <= 470:
-            self.side = "right"
-        if self.rect.x >= win_width-85:
-            self.side = "left"
 
-        if self.side == "left":
-            self.rect.x -= self.player_speed
-        else:
-            self.rect.x += self.player_speed
+        if level == 1:
+
+            if self.rect.x <= 470:
+                self.side = "right"
+            if self.rect.x >= win_width-85:
+                self.side = "left"
+
+            if self.side == "left":
+                self.rect.x -= self.player_speed
+            else:
+                self.rect.x += self.player_speed
+
+        if level == 2:  
+
+            if self.rect.x <= 300:#470
+                self.side = "right"
+            if self.rect.x >= win_width-70:#-85
+                self.side = "left"
+
+            if self.side == "left":
+                self.rect.x -= self.player_speed
+            else:
+                self.rect.x += self.player_speed
+
+        if level == 3:
+
+            if self.rect.x <= 210:
+                        self.side = "right"
+            if self.rect.x >= win_width/2 + 0:
+                        self.side = "left"
+
+            if self.side == "left":
+                self.rect.x -= self.player_speed
+            else:
+                self.rect.x += self.player_speed
+
+
 
 
 class Wall(pygame.sprite.Sprite):
@@ -84,7 +113,7 @@ w3 = Wall((22, 201, 187), 200, 20, 10, 150)
 w4 = Wall((22, 201, 187), 200, 160, 240, 10)
 w5 = Wall((22, 201, 187), 200, 250, 100, 10)
 w6 = Wall((22, 201, 187), 200, 250, 10, 350) #200, 250, 10, 350
-w7 = Wall((22, 201, 187), 300, 250, 10, 350) #300, 250, 10, 350
+w7 = Wall((22, 201, 187), 300, 250, 10, 350) #200, 250, 10, 350
 w8 = Wall((22, 201, 187), 430, 169, 10, 250) #430, 169, 10, 250
 w9 = Wall((22, 201, 187), 550, 350, 10, 250) #550, 350, 10, 250
 w10 = Wall((22, 201, 187), 550, 130, 10, 145)
@@ -160,7 +189,15 @@ while True:
             pygame.sprite.collide_rect(player, w7) or
             pygame.sprite.collide_rect(player, w8) or
             pygame.sprite.collide_rect(player, w9) or
-            pygame.sprite.collide_rect(player, w10)):
+            pygame.sprite.collide_rect(player, w10) or
+            pygame.sprite.collide_rect(player, w11) or
+            pygame.sprite.collide_rect(player, w12) or
+            pygame.sprite.collide_rect(player, w13) or
+            pygame.sprite.collide_rect(player, w14) or
+            pygame.sprite.collide_rect(player, w15) or
+            pygame.sprite.collide_rect(player, w16) or
+            pygame.sprite.collide_rect(player, w17) or
+            pygame.sprite.collide_rect(player, w18)):
             #pygame.sprite.collide_rect(player, w?)) or Для нових стінок
             finish = True
             DISPLAYSURF.blit(lose, (200,200))
@@ -181,7 +218,15 @@ while True:
         w7.kill()
         w8.kill()
         w9.kill()
-        w10.kill()        
+        w10.kill()
+        w11.kill()
+        w12.kill()
+        w13.kill()
+        w14.kill()
+        w15.kill()
+        w16.kill()
+        w17.kill()
+        w18.kill()        
         pygame.time.delay(1000)
         if lose_life != True:
             level += 1
@@ -193,56 +238,67 @@ while True:
             w4 = Wall((22, 201, 187), 200, 160, 240, 10)
             w5 = Wall((22, 201, 187), 200, 250, 100, 10)
             w6 = Wall((22, 201, 187), 200, 250, 10, 350)
-            w7 = Wall((22, 201, 187), 200, 250, 10, 350) #200, 250, 10, 350
+            w7 = Wall((22, 201, 187), 300, 250, 10, 350) #200, 250, 10, 350
             w8 = Wall((22, 201, 187), 430, 169, 10, 250) #430, 169, 10, 250
             w9 = Wall((22, 201, 187), 550, 350, 10, 250)
-            w10 = Wall((22, 201, 187), 550, 130, 10, 145)           
+            w10 = Wall((22, 201, 187), 550, 130, 10, 145)
+            w11 = Wall((22, 201, 187), 0, 20, 0, 10)
+            w12 = Wall((22, 201, 187), 0, 20, 0, 10)
+            w13 = Wall((22, 201, 187), 0, 20, 0, 10)
+            w14 = Wall((22, 201, 187), 0, 20, 0, 10)
+            w15 = Wall((22, 201, 187), 0, 20, 0, 10)
+            w16 = Wall((22, 201, 187), 0, 20, 0, 10)
+            w17 = Wall((22, 201, 187), 0, 20, 0, 10)
+            w18 = Wall((22, 201, 187), 0, 20, 0, 10)
+
+
 
             finish = False
             lose_life = False
         elif level == 2:
             player.refresh(10, win_height -80)
+            monster = Enemy("cyborg.png", win_width/2 -50, 240, 6)
             w1 = Wall((22, 201, 187), 100, 20, 580, 10)
             w2 = Wall((22, 201, 187), 100, 150, 10, 200)
-            w3 = Wall((22, 201, 187), 200, 250, 10, 300)
-            w4 = Wall((22, 201, 187), 100, 150, 200, 10)
+            w3 = Wall((22, 201, 187), 200, 250, 10, 300)#200, 250, 10, 300
+            w4 = Wall((22, 201, 187), 100, 150, 200, 10)#100, 150, 200, 10
             w5 = Wall((22, 201, 187), 300, 150, 10, 250)
-            w6 = Wall((22, 201, 187), 370, 300, 10, 250)
-            w7 = Wall((22, 201, 187), 370, 150, 10, 70)
-            w8 = Wall((22, 201, 187), 450, 300, 10, 100)
+            w6 = Wall((22, 201, 187), 370, 300, 10, 250)#370, 300, 10, 250
+            w7 = Wall((22, 201, 187), 370, 150, 10, 70)#370, 150, 10, 70
+            w8 = Wall((22, 201, 187), 450, 300, 10, 100)#450, 300, 10, 100
             w9 = Wall((22, 201, 187), 450, 20, 10, 200)
-            w10 = Wall((22, 201, 187), 500, 300, 10, 200)
-            w11 = Wall((22, 201, 187), 500, 100, 10, 120)
-            w12 = Wall((22, 201, 187), 650, 20, 10, 400)
+            w10 = Wall((22, 201, 187), 500, 300, 10, 200)#500, 300, 10, 200
+            w11 = Wall((22, 201, 187), 500, 100, 10, 120)#500, 100, 10, 120
+            w12 = Wall((22, 201, 187), 650, 20, 10, 400)#650, 20, 10, 400
             w13 = Wall((22, 201, 187), 100, 20, 10, 80)
-            w14 = Wall((22, 201, 187), 200, 80, 10, 70)
-            w15 = Wall((22, 201, 187), 300, 20, 10, 80)
-            w16 = Wall((22, 201, 187), 550, 100, 100, 10)
-            w17 = Wall((22, 201, 187), 500, 210, 110, 10)
+            w14 = Wall((22, 201, 187), 200, 80, 10, 70)#200, 80, 10, 70
+            w15 = Wall((22, 201, 187), 300, 20, 10, 80)#300, 20, 10, 80
+            w16 = Wall((22, 201, 187), 550, 100, 100, 10)#550, 100, 100, 10
+            w17 = Wall((22, 201, 187), 500, 210, 110, 10)#500, 210, 110, 10
             w18 = Wall((22, 201, 187), 550, 390, 100, 10)
 
             finish = False
             lose_life = False
         elif level == 3:
             player.refresh(50, 450)
-            w1 = Wall((22, 201, 187), 10, 2, 58, 10)
-            w2 = Wall((22, 201, 187), 10, 20, 10, 35)
-            w3 = Wall((22, 201, 187), 20, 2, 10, 15)
-            w4 = Wall((22, 201, 187), 20, 16, 24, 10)
-            w5 = Wall((22, 201, 187), 20, 25, 10, 10)
-            w6 = Wall((22, 201, 187), 20, 250, 10, 35)
-            w7 = Wall((22, 201, 187), 30, 250, 10, 35)
-            w8 = Wall((22, 201, 187), 43, 16, 10, 25)
-            w9 = Wall((22, 201, 187), 55, 35, 10, 25)
-            w10 = Wall((22, 201, 187), 55, 13, 10, 14)
-            w11 = Wall((22, 201, 187), 55, 13, 10, 14)
-            w12 = Wall((22, 201, 187), 55, 13, 10, 14)
-            w13 = Wall((22, 201, 187), 55, 13, 10, 14)
-            w14 = Wall((22, 201, 187), 55, 13, 10, 14)
-            w15 = Wall((22, 201, 187), 55, 13, 10, 14)
-            w16 = Wall((22, 201, 187), 55, 13, 10, 14)
-            w17 = Wall((22, 201, 187), 55, 13, 10, 14)
-            w18 = Wall((22, 201, 187), 55, 13, 10, 14)
+            w1 = Wall((22, 201, 187), 0, 20, 690, 10)
+            w2 = Wall((22, 201, 187), 90, 85, 10, 450)
+            w3 = Wall((22, 201, 187), 150, 20, 10, 400)
+            w4 = Wall((22, 201, 187), 210, 85, 10, 450)
+            w5 = Wall((22, 201, 187), 300, 85, 10, 150)
+            w6 = Wall((22, 201, 187), 300, 300, 10, 100)
+            w7 = Wall((22, 201, 187), 380, 85, 10, 320)
+            w8 = Wall((22, 201, 187), 370, 300, 230, 10)
+            w9 = Wall((22, 201, 187), 220, 30, 200, 10)#18
+            w10 = Wall((22, 201, 187), 440, 20, 10, 230)
+            w11 = Wall((22, 201, 187), 490, 80, 10, 230)
+            w12 = Wall((22, 201, 187), 540, 20, 10, 230)
+            w13 = Wall((22, 201, 187), 590, 80, 10, 230)
+            w14 = Wall((22, 201, 187), 690, 20, 10, 500)
+            w15 = Wall((22, 201, 187), 430, 370, 10, 200)
+            w16 = Wall((22, 201, 187), 480, 300, 10, 100)
+            w17 = Wall((22, 201, 187), 530, 370, 10, 200)
+            w18 = Wall((22, 201, 187), 0, 20, 690, 10)
 
             finish = False
             lose_life = False
